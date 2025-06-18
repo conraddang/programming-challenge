@@ -4,6 +4,7 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReaderHeaderAware;
 import com.opencsv.CSVReaderHeaderAwareBuilder;
+import de.bcxp.challenge.common.DataLoader;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,9 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class WeatherDataLoader {
+public class WeatherDataLoader implements DataLoader<WeatherData> {
 
-    public List<WeatherData> loadData(String resourcePath) {
+
+    @Override
+    public List<WeatherData> loadData(String resourcePath) throws Exception {
         List<WeatherData> dataEntries = new ArrayList<>();
         CSVParser parser = new CSVParserBuilder().withSeparator(',').build();
         InputStream input = getClass().getClassLoader().getResourceAsStream(resourcePath);
