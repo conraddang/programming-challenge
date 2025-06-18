@@ -6,6 +6,8 @@ import com.opencsv.CSVReaderHeaderAware;
 import com.opencsv.CSVReaderHeaderAwareBuilder;
 import de.bcxp.challenge.common.CSVDataLoader;
 import de.bcxp.challenge.common.DataLoader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,6 +18,7 @@ import java.util.Optional;
 
 public class WeatherDataLoader implements DataLoader<WeatherData> {
     private final CSVDataLoader csvDataLoader;
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public WeatherDataLoader(char separator) {
         this.csvDataLoader = new CSVDataLoader(separator);
@@ -40,7 +43,7 @@ public class WeatherDataLoader implements DataLoader<WeatherData> {
             int min = Integer.parseInt(row.get("MnT"));
             return Optional.of(new WeatherData(day, max, min));
         } catch (Exception e) {
-            System.out.println("Skipping row due to invalid number format: " + e.getMessage());
+            logger.warn("Skipping row due error: {}", e.getMessage());
             return Optional.empty();
         }
     }
