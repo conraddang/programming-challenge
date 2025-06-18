@@ -21,11 +21,13 @@ public class CountryDataLoader implements DataLoader<CountryData> {
     @Override
     public List<CountryData> loadData(String resourcePath) throws Exception {
         List<CountryData> dataEntries = new ArrayList<>();
+        logger.info("Accessing data from resource '{}'", resourcePath);
         List<Map<String, String>> csvRows = csvDataLoader.parse(resourcePath);
 
         for (Map<String, String> row : csvRows) {
             extractFields(row).ifPresent(dataEntries::add);
         }
+        logger.info("Loaded {} weather data entries from resource '{}'", dataEntries.size(), resourcePath);
         return dataEntries;
     }
 
