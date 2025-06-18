@@ -1,5 +1,6 @@
 package de.bcxp.challenge;
 
+import de.bcxp.challenge.country.CountryTask;
 import de.bcxp.challenge.weather.WeatherTask;
 
 /**
@@ -19,7 +20,7 @@ public final class App {
             String dayWithSmallestTempSpread = new WeatherTask().execute();     // Your day analysis function call …
             System.out.printf("Day with smallest temperature spread: %s%n", dayWithSmallestTempSpread);
 
-            String countryWithHighestPopulationDensity = "Some country"; // Your population density analysis function call …
+            String countryWithHighestPopulationDensity = new CountryTask().execute(); // Your population density analysis function call …
             System.out.printf("Country with highest population density: %s%n", countryWithHighestPopulationDensity);
         } catch (Exception e) {
             System.err.println("Error executing tasks: " + e.getMessage());
