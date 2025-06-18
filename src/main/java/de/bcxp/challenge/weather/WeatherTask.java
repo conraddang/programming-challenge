@@ -6,7 +6,7 @@ import java.util.List;
 
 public class WeatherTask implements Task {
     private final static String RESOURCE_PATH = "de/bcxp/challenge/weather.csv";
-    private final WeatherDataLoader weatherDataLoader = new WeatherDataLoader();
+    private final WeatherDataLoader weatherDataLoader = new WeatherDataLoader(',');
     private final WeatherService weatherService = new WeatherService();
 
     @Override
