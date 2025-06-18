@@ -6,6 +6,7 @@ import com.opencsv.CSVReaderHeaderAware;
 import com.opencsv.CSVReaderHeaderAwareBuilder;
 import de.bcxp.challenge.weather.WeatherData;
 
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -19,10 +20,13 @@ public class CSVDataLoader {
         this.separator = separator;
     }
 
-    public List<Map<String, String>> parse(String resourcePath) {
+    public List<Map<String, String>> parse(String resourcePath) throws Exception {
         List<Map<String, String>> allRows = new ArrayList<>();
         CSVParser parser = new CSVParserBuilder().withSeparator(separator).build();
         InputStream input = getClass().getClassLoader().getResourceAsStream(resourcePath);
+        if (input == null) {
+            throw new FileNotFoundException("Resource not found: " + resourcePath);
+        }
 
         try (CSVReaderHeaderAware reader = new CSVReaderHeaderAwareBuilder(new InputStreamReader(input)).withCSVParser(parser).build()) {
             Map<String, String> row;
@@ -31,7 +35,7 @@ public class CSVDataLoader {
                 allRows.add(row);
             }
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            throw new Exception("Failed to read CSV from: " + resourcePath, e);
         }
         return allRows;
     }
