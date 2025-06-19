@@ -40,7 +40,7 @@ public class WeatherDataLoader implements DataLoader<WeatherData> {
     @Override
     public Optional<WeatherData> extractFields(Map<String, String> row) {
         try {
-            String day = row.get("Day").trim();
+            String day = row.get("Day");
             int max = Integer.parseInt(row.get("MxT"));
             int min = Integer.parseInt(row.get("MnT"));
             return Optional.of(new WeatherData(day, max, min));
