@@ -34,13 +34,23 @@ public class CountryDataLoader implements DataLoader<CountryData> {
     @Override
     public Optional<CountryData> extractFields(Map<String, String> row) {
         try {
-            String name = row.get("Name").trim();
-            double population = Double.parseDouble(row.get("Population").trim().replace(".", "").replace(",", "."));
-            double area = Double.parseDouble(row.get("Area (km²)").trim());
+            String name = row.get("Name");
+            int population = parsePopulation(row.get("Population"));//.trim().replace(".", "").replace(",", "."));
+            int area = Integer.parseInt(row.get("Area (km²)"));
             return Optional.of(new CountryData(name, population, area));
         } catch (Exception e) {
             logger.warn("Skipping row due to error: {}", e.getMessage());
             return Optional.empty();
         }
+    }
+
+    private int parsePopulation(String populationStr) {
+        if (populationStr.contains(".")) {
+            populationStr = populationStr.replace(".", "");
+        }
+        if (populationStr.contains(",")) {
+            populationStr = populationStr.substring(0, populationStr.indexOf(","));
+        }
+        return Integer.parseInt(populationStr);
     }
 }

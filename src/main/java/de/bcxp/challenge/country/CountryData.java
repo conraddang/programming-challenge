@@ -2,10 +2,10 @@ package de.bcxp.challenge.country;
 
 public class CountryData {
     private final String name;
-    private final double population;
-    private final double area;
+    private final int population;
+    private final int area;
 
-    public CountryData(String name, double population, double area) {
+    public CountryData(String name, int population, int area) {
         this.name = name;
         this.population = population;
         this.area = area;
@@ -15,15 +15,15 @@ public class CountryData {
         return name;
     }
 
-    public double getPopulation() {
+    public int getPopulation() {
         return population;
     }
 
-    public double getArea() {
+    public int getArea() {
         return area;
     }
 
-    public double getPopulationDensity() {
+    public int getPopulationDensity() {
         return population/area;
     }
 }
