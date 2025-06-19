@@ -15,9 +15,6 @@ public class CountryTask implements Task {
     @Override
     public String execute() throws Exception {
         List<CountryData> dataEntries =  countyDataLoader.loadData(RESOURCE_PATH);
-        for (CountryData data : dataEntries) {
-            System.out.println("Name: " + data.getName() + ", Population: " + data.getPopulation() + ", Area: " + data.getArea() + ", Population Density: " + data.getPopulationDensity());
-        }
         CountryData result = countryService.findCountryWithHighestPopulationDensity(dataEntries);
 
         if (result == null) {

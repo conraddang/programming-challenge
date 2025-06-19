@@ -12,9 +12,6 @@ public class WeatherTask implements Task {
     @Override
     public String execute() throws Exception {
         List<WeatherData> dataEntries = weatherDataLoader.loadData(RESOURCE_PATH);
-        for (WeatherData dataEntry : dataEntries) {
-            System.out.println("Day: " + dataEntry.getDay() + " MaxT: " + dataEntry.getMaxTemp() + " MinT: " + dataEntry.getMinTemp() + " Spread: " + dataEntry.getTempSpread());
-        }
         WeatherData result = weatherService.findDayWithSmallestTempSpread(dataEntries);
 
         if (result == null) {
