@@ -18,13 +18,12 @@ public class CountryTask implements Task {
         for (CountryData data : dataEntries) {
             System.out.println("Name: " + data.getName() + ", Population: " + data.getPopulation() + ", Area: " + data.getArea() + ", Population Density: " + data.getPopulationDensity());
         }
-        return countryService.findCountryWithHighestPopulationDensity(dataEntries).getName();
+        CountryData result = countryService.findCountryWithHighestPopulationDensity(dataEntries);
+
+        if (result == null) {
+            return "No country found";
+        }
+        return result.getName();
     }
-
-
-
-
-
-
-
 }
+
