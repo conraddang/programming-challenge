@@ -1,9 +1,6 @@
 package de.bcxp.challenge.country;
 
 import de.bcxp.challenge.common.Task;
-import de.bcxp.challenge.weather.WeatherData;
-import de.bcxp.challenge.weather.WeatherDataLoader;
-import de.bcxp.challenge.weather.WeatherService;
 
 import java.util.List;
 

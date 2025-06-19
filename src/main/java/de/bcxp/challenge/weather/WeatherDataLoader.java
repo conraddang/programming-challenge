@@ -1,16 +1,10 @@
 package de.bcxp.challenge.weather;
 
-import com.opencsv.CSVParser;
-import com.opencsv.CSVParserBuilder;
-import com.opencsv.CSVReaderHeaderAware;
-import com.opencsv.CSVReaderHeaderAwareBuilder;
 import de.bcxp.challenge.common.CSVDataLoader;
 import de.bcxp.challenge.common.DataLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

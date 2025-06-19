@@ -4,7 +4,6 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReaderHeaderAware;
 import com.opencsv.CSVReaderHeaderAwareBuilder;
-import de.bcxp.challenge.weather.WeatherData;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
