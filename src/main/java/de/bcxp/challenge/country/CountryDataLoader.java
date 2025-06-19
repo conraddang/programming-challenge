@@ -44,7 +44,7 @@ public class CountryDataLoader implements DataLoader<CountryData> {
         }
     }
 
-    private int parsePopulation(String populationStr) {
+    public int parsePopulation(String populationStr) {
         if (populationStr.contains(".")) {
             populationStr = populationStr.replace(".", "");
         }
